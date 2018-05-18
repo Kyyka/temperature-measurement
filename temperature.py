@@ -50,8 +50,8 @@ def kill():
 if __name__ == '__main__':
     try:
         s1 = sensor1()
-        outsideTemperature(s1)
         s2 = sensor2()
+        outsideTemperature(s1)
         insideTemperature(s2)
     except KeyboardInterrupt:
         kill()
