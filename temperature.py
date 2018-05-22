@@ -1,3 +1,4 @@
+# One script for both of the sensors to show temperatures at the same time.
 import os
 
 def sensor1():
