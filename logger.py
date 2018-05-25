@@ -1,4 +1,7 @@
 from time import sleep, strftime, time
+from datetime import datetime
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import os
 import csv
@@ -43,26 +46,26 @@ def read(outsidesensor):
 def outsideTemperature(outsidesensor):
     with open ("outside_temp.csv", "a") as logging:
         temp = read(outsidesensor)
-        logging.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str("%0.1f" % temp)))
+        logging.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M"),str("%0.1f" % temp)))
 
 def insideTemperature(insidesensor):
     with open ("inside_temp.csv", "a") as logging:
         temp = read(insidesensor)
-        logging.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str("%0.1f" % temp)))
+        logging.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M"),str("%0.1f" % temp)))
 
 # Work in progress
 def graph():
     with open ("outside_temp.csv", "r") as outcsvfile:
         plots = csv.reader(outcsvfile, delimiter=",")
         for row in plots:
-            x.append(str(row[0]))
+            x.append(datetime.strptime(row[0], "%Y-%m-%d %H:%M"))
             y.append(float(row[1]))
     
-    plt.plot(x,y)
-    plt.xlabel("x")
-    plt.ylabel("y")
-    #plt.title("")
-    plt.legend()
+    plt.plot(x,y) #label="Label here")
+    plt.xlabel("Time")
+    plt.ylabel("Temperature C")
+    plt.title("Outside Temperature")
+    #plt.legend()
     plt.savefig("temp.png")
 
 if __name__ == '__main__':
