@@ -1,2 +1,2 @@
 # temperature-measurement
-Measuring inside and outside temperatures using Raspberry Pi and DS18B20 sensors
+Measuring and logging indoors and outdoors temperatures using Raspberry Pi and DS18B20 sensors.
