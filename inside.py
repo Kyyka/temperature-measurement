@@ -1,3 +1,4 @@
+# Read indoor temperature
 import os
 
 def sensor1():
