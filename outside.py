@@ -1,3 +1,4 @@
+# Read outdoor temperature
 import os
 
 def sensor2():
